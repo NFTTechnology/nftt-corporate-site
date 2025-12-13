@@ -1049,6 +1049,10 @@ body {
 .site-branding {
 	padding-right: 10px;
 }
+.site-logo {
+	margin: 0;
+	padding: 0;
+}
 .site-logo a:hover {
 	opacity: 0.8;
 }
