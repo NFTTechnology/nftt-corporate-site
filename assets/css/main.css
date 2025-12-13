@@ -3477,7 +3477,7 @@ b, strong {
 .site-logo a{
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position: left center;
     width: 280px;
     height: 60px;
     display: block;
@@ -3992,7 +3992,7 @@ b, strong {
 .site-logo a{
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center;
+    background-position: left center;
     width: 280px;
     height: 60px;
     display: block;
