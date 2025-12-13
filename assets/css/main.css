@@ -3847,43 +3847,52 @@ background-image: url(/wp-content/uploads/2022/04/nfttech-logo02.png) !important
 
 
 .container--contact--inner{
-    width: 600px;
+    width: 100%;
+    max-width: 700px;
     background-color: #e0e0e9;
-    display: flex;
-    justify-content: center;
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
     border-radius: 16px;
     margin: auto;
+    box-sizing: border-box;
 }
 @media screen and (max-width: 979px) {
 	.container--contact--inner{
-		width: auto;
-		padding: 2rem;
+		width: 100%;
+		max-width: none;
+		padding: 2rem 1rem;
 		border-radius: 16px;
 		margin: auto;
 	}
 }
 
+#contact-form-container {
+    width: 100%;
+}
+
 .container--contact--inner input,
 .container--contact--inner textarea{
     border-radius: 8px;
-    padding: 1rem 0.6em;
+    padding: 1rem 0.8em;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
 }
-@media screen and (max-width: 979px) {
-	.container--contact--inner input,
-	.container--contact--inner textarea{
-		width:100%;
-	}
-}
-.container--contact--inner input[type="submit"]{
+
+.container--contact--inner input[type="submit"],
+.container--contact--inner button{
     background-color: #0445ff;
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     width: 100%;
-    padding: 1.6rem 1rem;
+    padding: 1.2rem 1rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
 }
-.container--contact--inner input[type="submit"]:hover{
+.container--contact--inner input[type="submit"]:hover,
+.container--contact--inner button:hover{
     background-color: #386dff;
 }
 
