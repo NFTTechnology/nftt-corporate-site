@@ -360,8 +360,29 @@ background-image: url(../../uploads/2022/04/nfttech-logo02.png) !important;
 		font-size: 1.3rem;
 	}
 }
+/* wp-block-image中央揃え（全ページ共通） */
+.wp-block-image.aligncenter {
+    text-align: center;
+}
 .container-projects .wp-block-image.aligncenter {
     text-align: center;
+}
+
+/* NFT4CREATORS画像セクション */
+.container-nft4c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    padding: 4rem 1rem;
+}
+.container-nft4c figure {
+    margin: 0 auto;
+    text-align: center;
+}
+.container-nft4c img {
+    max-width: 100%;
+    height: auto;
 }
 .cintainer--news{
 /* 	display:none; */
