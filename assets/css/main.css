@@ -3781,14 +3781,24 @@ background-image: url(/wp-content/uploads/2022/04/nfttech-logo02.png) !important
     align-items: center;
     max-width: 100%;
     padding: 4rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 .container-nft4c figure {
     margin: 0 auto;
+    text-align: center;
+    display: block;
+    width: auto;
+}
+.container-nft4c figure a {
+    display: block;
     text-align: center;
 }
 .container-nft4c img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 .container-projects .wp-block-image.aligncenter-PLACEHOLDER {
     text-align: center;
@@ -4320,14 +4330,24 @@ background-image: url(/wp-content/uploads/2022/04/nfttech-logo02.png) !important
     align-items: center;
     max-width: 100%;
     padding: 4rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 .container-nft4c figure {
     margin: 0 auto;
+    text-align: center;
+    display: block;
+    width: auto;
+}
+.container-nft4c figure a {
+    display: block;
     text-align: center;
 }
 .container-nft4c img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 .container-projects .wp-block-image.aligncenter-PLACEHOLDER {
     text-align: center;
