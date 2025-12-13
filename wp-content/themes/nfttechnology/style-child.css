@@ -5,7 +5,7 @@ Template: businesspress
 */
 
 body{
-    font-family: 'ヒラギノ角ゴシック','Hiragino Sans',sans-serif !important;
+    font-family: "Inter", "Noto Sans JP", 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif !important;
 }
 p{
 	font-weight: normal;
@@ -428,12 +428,8 @@ background-image: url(../../uploads/2022/04/nfttech-logo02.png) !important;
 .container--contact--inner textarea{
     border-radius: 8px;
     padding: 1rem 0.6em;
-}
-@media screen and (max-width: 979px) {
-	.container--contact--inner input,
-	.container--contact--inner textarea{
-		width:100%;
-	}
+    width: 100%;
+    box-sizing: border-box;
 }
 .container--contact--inner input[type="submit"]{
     background-color: #0445ff;

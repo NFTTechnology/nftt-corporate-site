@@ -5,7 +5,7 @@ Template: businesspress
 */
 
 body{
-    font-family: "Noto Sans JP", "Inter", 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif !important;
+    font-family: "Inter", "Noto Sans JP", 'ヒラギノ角ゴシック', 'Hiragino Sans', sans-serif !important;
 }
 p{
 	font-weight: normal;
