@@ -109,7 +109,7 @@
 	} );
 
 	// Set Smooth Scroll
-	$('a[href^=#]').click(function() {
+	$('a[href^="#"]').click(function() {
 		var headerHight = $('.main-header-clone').outerHeight()+45;
 		var href = $(this).attr('href');
 		var target = $(href == '#' || href == '' ? 'html' : href);
