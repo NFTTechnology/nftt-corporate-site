@@ -80,7 +80,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <!-- Consolidated CSS -->
-<link rel='stylesheet' href='/assets/css/main.css?v=20251214' type='text/css' media='all' />
+<link rel='preload' href='/assets/css/main.css?v=20251214' as='style' onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel='stylesheet' href='/assets/css/main.css?v=20251214'></noscript>
 
 
 
@@ -90,7 +91,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='wp-block-heading-css' href='../wp-includes/blocks/heading/style.min.css%3Fver=6.9.css' type='text/css' media='all' />
 <link rel='stylesheet' id='wp-block-paragraph-css' href='../wp-includes/blocks/paragraph/style.min.css%3Fver=6.9.css' type='text/css' media='all' />
 <link rel='stylesheet' id='wp-block-columns-css' href='../wp-includes/blocks/columns/style.min.css%3Fver=6.9.css' type='text/css' media='all' />
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script defer src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <meta name="cdp-version" content="1.4.9" />
 <!-- Google Tag Manager for WordPress by gtm4wp.com -->
 <!-- GTM Container placement set to automatic -->
@@ -307,9 +308,9 @@ var businesspressScreenReaderText = {"expand":"\u5b50\u30e1\u30cb\u30e5\u30fc\u3
 
 <!-- Consolidated JS -->
 <script>var businesspressScreenReaderText = {"expand":"子メニューを開く","collapse":"子メニューを閉じる"};</script>
-<script src="/assets/js/main.js?v=20251214"></script>
-<script src="/assets/js/particles.js?v=20251214"></script>
-<script src="/assets/js/particlesjs-config.js?v=20251214"></script>
+<script defer src="/assets/js/main.js?v=20251214"></script>
+<script defer src="/assets/js/particles.js?v=20251214"></script>
+<script defer src="/assets/js/particlesjs-config.js?v=20251214"></script>
 </body>
 </html>
 
