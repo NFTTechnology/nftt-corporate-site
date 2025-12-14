@@ -25,7 +25,15 @@ a{color:#4693f5;text-decoration:underline;transition:all .15s ease-in-out;backgr
 .drawer-hamburger-icon:after,.drawer-hamburger-icon:before{position:absolute;left:0;content:" "}
 .drawer-hamburger-icon:before{top:-6px}
 .drawer-hamburger-icon:after{top:6px}
-.drawer-navigation,.drawer-overlay{display:none}
+.drawer-overlay{display:none;height:100vh;left:0;position:fixed;top:0;width:100%;z-index:100;background:rgba(0,0,0,0.5)}
+.drawer-navigation{background:#fff;height:100vh;overflow-y:auto;position:fixed;right:0;top:0;transform:translateX(100%);transition:all .6s cubic-bezier(.19,1,.22,1);width:90%;z-index:101;-webkit-overflow-scrolling:touch}
+.drawer-navigation-content{box-sizing:border-box;height:100%;overflow-y:auto;padding:60px 75px 60px 40px;width:100%}
+.drawer-opened .drawer-overlay{display:block}
+.drawer-opened .drawer-navigation{box-shadow:0 0 90px rgba(0,0,0,.2);transform:translateX(0)}
+.drawer-opened .drawer-hamburger-icon{background-color:transparent}
+.drawer-opened .drawer-hamburger-icon:before,.drawer-opened .drawer-hamburger-icon:after{background-color:#333}
+.drawer-opened .drawer-hamburger-icon:before{top:0;transform:rotate(45deg)}
+.drawer-opened .drawer-hamburger-icon:after{top:0;transform:rotate(-45deg)}
 
 /* Hero Section */
 .home-header{background-color:#333;background-position:center;background-size:cover}
