@@ -82,10 +82,206 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 <!-- Google Fonts: Noto Sans JP + Inter -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <!-- Consolidated CSS -->
 <link rel='preload' href='/assets/css/main.css?v=20251214' as='style' onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel='stylesheet' href='/assets/css/main.css?v=20251214'></noscript>
+
+<!-- Works Page Bento Grid Light Theme -->
+<style>
+  /* Section Container - Light Theme */
+  .works-section {
+    background: #ffffff;
+    padding: 40px 20px 80px;
+    min-height: 50vh;
+    position: relative;
+  }
+  .works-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Section Header */
+  .works-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .works-label {
+    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .works-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .works-subtitle {
+    font-size: 15px;
+    color: #6b7280;
+    max-width: 500px;
+    line-height: 1.7;
+    margin: 0 auto;
+  }
+
+  /* Bento Grid */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 280px);
+    gap: 20px;
+  }
+
+  /* Bento Card Base */
+  .bento-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .bento-card:hover {
+    border-color: #d1d5db;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Card Sizes */
+  .bento-featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  }
+  .bento-wide {
+    grid-column: span 2;
+  }
+
+  /* Card Content */
+  .bento-icon-wrap {
+    width: 52px;
+    height: 52px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+  .bento-card:hover .bento-icon-wrap {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+  }
+  .bento-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+  .bento-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7280;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  .bento-card-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .bento-featured .bento-card-title {
+    font-size: 24px;
+  }
+  .bento-card-desc {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.8;
+    flex-grow: 1;
+  }
+  .bento-featured .bento-card-desc {
+    font-size: 15px;
+    max-width: 420px;
+  }
+
+  /* CTA */
+  .bento-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3b82f6;
+    margin-top: auto;
+    padding-top: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+  .bento-card:hover .bento-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .bento-cta svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+  .bento-card:hover .bento-cta svg {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+    .bento-featured {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+    .bento-wide {
+      grid-column: span 2;
+    }
+  }
+  @media (max-width: 600px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .bento-featured,
+    .bento-wide {
+      grid-column: span 1;
+    }
+    .works-title {
+      font-size: 28px;
+    }
+    .bento-card {
+      padding: 24px;
+    }
+  }
+</style>
 
 
 
@@ -164,7 +360,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<div class="jumbotron-content">
 
 											<div class="subheader">works</div>
-						<h2 class="jumbotron-title">実績一覧</h2>
+						<h2 class="jumbotron-title">開発実績</h2>
 										
 				</div><!-- .jumbotron-content -->
 			</div><!-- .jumbotron-overlay -->
@@ -177,103 +373,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<div id="content" class="site-content">
 		
 
-<section id="primary" class="content">
-	<main id="main" class="site-main">
+<!-- Works Bento Grid Section -->
+<section class="works-section">
+  <div class="works-container">
 
-	
+    <!-- Bento Grid -->
+    <div class="bento-grid">
 
+      <!-- Featured: Polygon Airdropper -->
+      <a href="/works/polygon-airdropper/" class="bento-card bento-featured">
+        <div class="bento-icon-wrap">
+          <img src="/wp-content/uploads/2022/04/works_icon_airdrop.png" alt="" class="bento-icon">
+        </div>
+        <span class="bento-tag">Polygon Network</span>
+        <div class="bento-card-title">シリアルコード連動型<br>エアドロッパー</div>
+        <div class="bento-card-desc">国内大手通信会社プロジェクトにて開発。CMS経由でNFTをブロックチェーン上にデプロイし、シリアルコードとトークンを紐付け。顧客がコードを発行すると自動でNFTをエアドロップするシステム。</div>
+        <div class="bento-cta">
+          <span>詳細をみる</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
 
-		<div class="loop-wrapper">
-				
-<div class="post-summary archive-thumb">
-	<article id="post-194" class="post-194 works type-works status-publish has-post-thumbnail hentry">
-		<div class="entry-header">
+      <!-- Chrome Extension -->
+      <a href="/works/opensea-chromeextension/" class="bento-card">
+        <div class="bento-icon-wrap">
+          <img src="/wp-content/uploads/2022/04/works_icon_chrome_extention.png" alt="" class="bento-icon">
+        </div>
+        <span class="bento-tag">Chrome Extension</span>
+        <div class="bento-card-title">OpenSea レアリティ解析</div>
+        <div class="bento-card-desc">NFTのTraitsから独自ロジックでレアリティを算出。ブラウザ上でリアルタイム表示。</div>
+        <div class="bento-cta">
+          <span>詳細をみる</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
 
-							<div class="post-thumbnail">
-					<a href="/works/polygon-airdropper/"><img width="473" height="473" src="../wp-content/uploads/2022/04/works_icon_airdrop.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="polygonネットワーク向けシリアルコード連動型エアドロッパー" decoding="async" fetchpriority="high" /></a>
-				</div>
-			
-			<div class="archive-thumb--items">
-								
-				<h2 class="entry-title"><a href="/works/polygon-airdropper/" rel="bookmark">polygonネットワーク向けシリアルコード連動型エアドロッパー</a></h2>
+      <!-- Minter Bot -->
+      <a href="/works/ethereum-bot/" class="bento-card">
+        <div class="bento-icon-wrap">
+          <img src="/wp-content/uploads/2022/04/works_icon_minterbot.png" alt="" class="bento-icon">
+        </div>
+        <span class="bento-tag">Ethereum</span>
+        <div class="bento-card-title">自動Minterボット</div>
+        <div class="bento-card-desc">パブリックセール時の購入を自動化。ガス代高騰にも対応。</div>
+        <div class="bento-cta">
+          <span>詳細をみる</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
 
-				<p>国内大手通信会社プロジェクトにて開発中。 CMS経由で指定してるNFTをブロックチェーン上にデプロイを行い、シリアルコードとNFTトークンを紐付け、顧客がシリアルコードを発行した場合に無償でエアドロップを行えるシステムを&#8230;</p>
+      <!-- Analytics - Wide -->
+      <a href="/works/ethereum-analysis/" class="bento-card bento-wide">
+        <div class="bento-icon-wrap">
+          <img src="/wp-content/uploads/2022/04/works_icon_analytics.png" alt="" class="bento-icon">
+        </div>
+        <span class="bento-tag">Analytics</span>
+        <div class="bento-card-title">NFT投資解析ツール</div>
+        <div class="bento-card-desc">genesis地点から現在に至る全トランザクションを解析。OpenSea、LooksRare、Rarible等のマーケットプレイスやgenie、gem等のアグリゲーターに対応したリアルタイム解析プラットフォーム。</div>
+        <div class="bento-cta">
+          <span>詳細をみる</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
 
-				<a href="/works/polygon-airdropper/" class="btn btn-primary">詳細をみる</a>
-			</div>
-
-		</div><!-- .entry-header -->
-
-	</article><!-- #post-## -->
-</div><!-- .post-summary -->
-<div class="post-summary archive-thumb">
-	<article id="post-193" class="post-193 works type-works status-publish has-post-thumbnail hentry">
-		<div class="entry-header">
-
-							<div class="post-thumbnail">
-					<a href="/works/opensea-chromeextension/"><img width="473" height="473" src="https://nftt.co.jp/wp-content/uploads/2022/04/works_icon_chrome_extention.png" /></a>
-				</div>
-			
-			<div class="archive-thumb--items">
-								
-				<h2 class="entry-title"><a href="/works/opensea-chromeextension/" rel="bookmark">opensea向けchromeExtensionツール</a></h2>
-
-				<p>openseaに掲載されてるNFTはTraitsを保持してるケースが多くなります。 その為に全発行NFTからどの程度レアであるかを判断する様、独自ロジックを開発しchrome extensionの形式で提供。 ブラウザで&#8230;</p>
-
-				<a href="/works/opensea-chromeextension/" class="btn btn-primary">詳細をみる</a>
-			</div>
-
-		</div><!-- .entry-header -->
-
-	</article><!-- #post-## -->
-</div><!-- .post-summary -->
-<div class="post-summary archive-thumb">
-	<article id="post-182" class="post-182 works type-works status-publish has-post-thumbnail hentry">
-		<div class="entry-header">
-
-							<div class="post-thumbnail">
-					<a href="/works/ethereum-bot/"><img width="473" height="473" src="https://nftt.co.jp/wp-content/uploads/2022/04/works_icon_minterbot.png" /></a>
-				</div>
-			
-			<div class="archive-thumb--items">
-								
-				<h2 class="entry-title"><a href="/works/ethereum-bot/" rel="bookmark">ethereumネットワーク向けminterボット開発</a></h2>
-
-				<p>著名なNFTがパブリックセールを行う場合、あらゆる理由で購入できない可能性があります。 ランディングページがトラフィック増加によるレスポンス劣化ガス代が飛躍的に向上しトランザクションが失敗タイミング遅れて購入ができない &#8230;</p>
-
-				<a href="/works/ethereum-bot/" class="btn btn-primary">詳細をみる</a>
-			</div>
-
-		</div><!-- .entry-header -->
-
-	</article><!-- #post-## -->
-</div><!-- .post-summary -->
-<div class="post-summary archive-thumb">
-	<article id="post-181" class="post-181 works type-works status-publish has-post-thumbnail hentry">
-		<div class="entry-header">
-
-							<div class="post-thumbnail">
-					<a href="/works/ethereum-analysis/"><img width="473" height="473" src="https://nftt.co.jp/wp-content/uploads/2022/04/works_icon_analytics.png" /></a>
-				</div>
-			
-			<div class="archive-thumb--items">
-								
-				<h2 class="entry-title"><a href="/works/ethereum-analysis/" rel="bookmark">ethereumネットワーク上のNFT投資解析ツール開発</a></h2>
-
-				<p>NFT取引をgenesis地点から現在に渡ってトランザクション、レシート、ブロック情報からopensea, looksrare, rarible等の、マーケットプレイスの利用やgenie, gem等のアグリゲーションサー&#8230;</p>
-
-				<a href="/works/ethereum-analysis/" class="btn btn-primary">詳細をみる</a>
-			</div>
-
-		</div><!-- .entry-header -->
-
-	</article><!-- #post-## -->
-</div><!-- .post-summary -->		</div><!-- .loop-wrapper -->
-
-
-	
-	</main><!-- #main -->
-</section><!-- #primary -->
+    </div>
+  </div>
+</section>
 
 
 	</div><!-- #content -->
