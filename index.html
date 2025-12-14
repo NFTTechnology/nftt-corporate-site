@@ -334,6 +334,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						<form id="contact-form" novalidate>
 							<input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
 							<div class="form-group">
+								<label for="form-company">会社名</label>
+								<input type="text" name="company" id="form-company" maxlength="100" placeholder="株式会社〇〇">
+							</div>
+							<div class="form-group">
 								<label for="form-name">氏名 <span class="required">*</span></label>
 								<input type="text" name="name" id="form-name" required maxlength="100" placeholder="山田 太郎">
 							</div>
@@ -350,6 +354,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 								<textarea name="message" id="form-message" rows="6" required minlength="10" maxlength="2000" placeholder="お問い合わせ内容をご記入ください"></textarea>
 							</div>
 							<div id="form-errors" class="form-errors"></div>
+							<div class="form-group form-group-checkbox">
+								<label class="checkbox-label">
+									<input type="checkbox" name="privacy" id="form-privacy" required>
+									<span class="checkbox-text"><a href="/privacy-policy/" target="_blank">プライバシーポリシー</a>を確認し、同意します <span class="required">*</span></span>
+								</label>
+							</div>
 							<button type="button" onclick="showConfirm()" class="btn-submit">送信内容を確認</button>
 						</form>
 					</div>
@@ -358,6 +368,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<div id="form-confirm" class="form-confirm">
 						<div class="confirm-header">入力内容をご確認ください</div>
 						<div class="confirm-table">
+							<div class="confirm-row" id="confirm-company-row" style="display:none">
+								<div class="confirm-label">会社名</div>
+								<div class="confirm-value" id="confirm-company"></div>
+							</div>
 							<div class="confirm-row">
 								<div class="confirm-label">氏名</div>
 								<div class="confirm-value" id="confirm-name"></div>
@@ -390,21 +404,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</div>
 			</div>
 
+<style>
+.form-group-checkbox {
+  margin: 1.5rem 0;
+}
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.checkbox-label input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 2px 10px 0 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #0445ff;
+}
+.checkbox-text {
+  color: #555;
+}
+.checkbox-text a {
+  color: #0445ff;
+  text-decoration: underline;
+}
+.checkbox-text a:hover {
+  color: #386dff;
+}
+</style>
+
 <script>
 const API_URL = 'https://7shd6qfata.execute-api.us-east-1.amazonaws.com/prod/contact';
 
 function showConfirm() {
   const form = document.getElementById('contact-form');
   const errors = [];
+  const company = form.company.value.trim();
   const name = form.name.value.trim();
   const email = form.email.value.trim();
   const subject = form.subject.value.trim();
   const message = form.message.value.trim();
+  const privacy = form.privacy.checked;
 
   if (name.length < 2) errors.push('氏名を入力してください');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('有効なメールアドレスを入力してください');
   if (subject.length < 2) errors.push('件名を入力してください');
   if (message.length < 10) errors.push('メッセージを10文字以上入力してください');
+  if (!privacy) errors.push('プライバシーポリシーに同意してください');
 
   if (errors.length > 0) {
     document.getElementById('form-errors').innerHTML = errors.join('<br>');
@@ -413,6 +461,13 @@ function showConfirm() {
   }
   document.getElementById('form-errors').style.display = 'none';
 
+  // 会社名がある場合のみ表示
+  if (company) {
+    document.getElementById('confirm-company').textContent = company;
+    document.getElementById('confirm-company-row').style.display = 'flex';
+  } else {
+    document.getElementById('confirm-company-row').style.display = 'none';
+  }
   document.getElementById('confirm-name').textContent = name;
   document.getElementById('confirm-email').textContent = email;
   document.getElementById('confirm-subject').textContent = subject;
@@ -434,6 +489,7 @@ async function submitForm() {
 
   const form = document.getElementById('contact-form');
   const data = {
+    company: form.company.value.trim(),
     name: form.name.value.trim(),
     email: form.email.value.trim(),
     subject: form.subject.value.trim(),
