@@ -280,11 +280,17 @@
 
 .container-vision .section-header .subtitle {
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--text-primary);
   margin-top: 16px;
   letter-spacing: 0.05em;
+}
+
+@media screen and (min-width: 980px) {
+  .container-vision .section-header .subtitle {
+    font-size: 24px;
+  }
 }
 
 .container-vision .vision-content {
@@ -295,15 +301,15 @@
 
 .container-vision .vision-content p {
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.9;
   color: #222;
   margin: 0;
 }
 
 @media screen and (min-width: 980px) {
   .container-vision .vision-content p {
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 
