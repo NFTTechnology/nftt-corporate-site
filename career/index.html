@@ -348,7 +348,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<h2 class="has-text-align-center wp-block-heading">採用に関するお問い合わせはこちら</h2>
+<h2 class="has-text-align-center wp-block-heading">採用エントリーフォーム</h2>
 
 
 
@@ -362,21 +362,62 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="form-input" class="form-input">
 	<form id="career-contact-form" novalidate>
 		<input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
-		<div class="form-group">
-			<label for="career-form-company">会社名</label>
-			<input type="text" name="company" id="career-form-company" maxlength="100" placeholder="株式会社〇〇">
+		<div class="form-row">
+			<div class="form-group">
+				<label for="career-form-name">氏名 <span class="required">*</span></label>
+				<input type="text" name="name" id="career-form-name" required maxlength="100" placeholder="山田 太郎">
+			</div>
+			<div class="form-group">
+				<label for="career-form-kana">フリガナ <span class="required">*</span></label>
+				<input type="text" name="kana" id="career-form-kana" required maxlength="100" placeholder="ヤマダ タロウ">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group">
+				<label for="career-form-email">メールアドレス <span class="required">*</span></label>
+				<input type="email" name="email" id="career-form-email" required maxlength="200" placeholder="email@example.com">
+			</div>
+			<div class="form-group">
+				<label for="career-form-phone">電話番号 <span class="required">*</span></label>
+				<input type="tel" name="phone" id="career-form-phone" required maxlength="20" placeholder="090-1234-5678">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group">
+				<label for="career-form-position">応募職種 <span class="required">*</span></label>
+				<select name="position" id="career-form-position" required>
+					<option value="">選択してください</option>
+					<option value="Web3エンジニア">Web3エンジニア</option>
+					<option value="フロントエンドエンジニア">フロントエンドエンジニア</option>
+					<option value="バックエンドエンジニア">バックエンドエンジニア</option>
+					<option value="その他">その他</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="career-form-experience">エンジニア経験年数 <span class="required">*</span></label>
+				<select name="experience" id="career-form-experience" required>
+					<option value="">選択してください</option>
+					<option value="1年未満">1年未満</option>
+					<option value="1〜3年">1〜3年</option>
+					<option value="3〜5年">3〜5年</option>
+					<option value="5〜10年">5〜10年</option>
+					<option value="10年以上">10年以上</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group">
+				<label for="career-form-company">現在の所属</label>
+				<input type="text" name="company" id="career-form-company" maxlength="100" placeholder="株式会社〇〇（在職中の場合）">
+			</div>
+			<div class="form-group">
+				<label for="career-form-portfolio">GitHub / ポートフォリオURL</label>
+				<input type="url" name="portfolio" id="career-form-portfolio" maxlength="500" placeholder="https://github.com/username">
+			</div>
 		</div>
 		<div class="form-group">
-			<label for="career-form-name">氏名 <span class="required">*</span></label>
-			<input type="text" name="name" id="career-form-name" required maxlength="100" placeholder="山田 太郎">
-		</div>
-		<div class="form-group">
-			<label for="career-form-email">メールアドレス <span class="required">*</span></label>
-			<input type="email" name="email" id="career-form-email" required maxlength="200" placeholder="email@example.com">
-		</div>
-		<div class="form-group">
-			<label for="career-form-message">お問い合わせ内容 <span class="required">*</span></label>
-			<textarea name="message" id="career-form-message" rows="6" required minlength="10" maxlength="2000" placeholder="志望動機、職務経歴、質問などをご記入ください"></textarea>
+			<label for="career-form-message">志望動機・自己PR <span class="required">*</span></label>
+			<textarea name="message" id="career-form-message" rows="8" required minlength="50" maxlength="3000" placeholder="志望動機、これまでの経験、得意な技術領域などをご記入ください"></textarea>
 		</div>
 		<div id="career-form-errors" class="form-errors"></div>
 		<div class="form-group form-group-checkbox">
@@ -385,53 +426,73 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<span class="checkbox-text"><a href="/privacy-policy/" target="_blank">プライバシーポリシー</a>を確認し、同意します <span class="required">*</span></span>
 			</label>
 		</div>
-		<button type="button" onclick="showCareerConfirm()" class="btn-submit">送信内容を確認</button>
+		<button type="button" onclick="showCareerConfirm()" class="btn-submit">応募内容を確認</button>
 	</form>
 </div>
 
 <!-- 確認画面 -->
 <div id="career-form-confirm" class="form-confirm">
-	<div class="confirm-header">入力内容をご確認ください</div>
+	<div class="confirm-header">応募内容をご確認ください</div>
 	<div class="confirm-table">
-		<div class="confirm-row" id="career-confirm-company-row" style="display:none">
-			<div class="confirm-label">会社名</div>
-			<div class="confirm-value" id="career-confirm-company"></div>
-		</div>
 		<div class="confirm-row">
 			<div class="confirm-label">氏名</div>
 			<div class="confirm-value" id="career-confirm-name"></div>
+		</div>
+		<div class="confirm-row">
+			<div class="confirm-label">フリガナ</div>
+			<div class="confirm-value" id="career-confirm-kana"></div>
 		</div>
 		<div class="confirm-row">
 			<div class="confirm-label">メールアドレス</div>
 			<div class="confirm-value" id="career-confirm-email"></div>
 		</div>
 		<div class="confirm-row">
-			<div class="confirm-label">お問い合わせ内容</div>
+			<div class="confirm-label">電話番号</div>
+			<div class="confirm-value" id="career-confirm-phone"></div>
+		</div>
+		<div class="confirm-row" id="career-confirm-company-row" style="display:none">
+			<div class="confirm-label">現在の所属</div>
+			<div class="confirm-value" id="career-confirm-company"></div>
+		</div>
+		<div class="confirm-row">
+			<div class="confirm-label">応募職種</div>
+			<div class="confirm-value" id="career-confirm-position"></div>
+		</div>
+		<div class="confirm-row">
+			<div class="confirm-label">経験年数</div>
+			<div class="confirm-value" id="career-confirm-experience"></div>
+		</div>
+		<div class="confirm-row" id="career-confirm-portfolio-row" style="display:none">
+			<div class="confirm-label">GitHub / ポートフォリオ</div>
+			<div class="confirm-value" id="career-confirm-portfolio"></div>
+		</div>
+		<div class="confirm-row">
+			<div class="confirm-label">志望動機・自己PR</div>
 			<div class="confirm-value" id="career-confirm-message"></div>
 		</div>
 	</div>
 	<div class="confirm-buttons">
 		<button type="button" onclick="backToCareerInput()" class="btn-back">修正する</button>
-		<button type="button" onclick="submitCareerForm()" id="career-submit-btn" class="btn-submit">送信する</button>
+		<button type="button" onclick="submitCareerForm()" id="career-submit-btn" class="btn-submit">応募する</button>
 	</div>
 </div>
 
 <!-- 完了画面 -->
 <div id="career-form-complete" class="form-complete">
 	<div class="complete-icon">✓</div>
-	<div class="complete-title">送信完了</div>
-	<p>お問い合わせありがとうございます。<br>確認メールをお送りしましたのでご確認ください。<br>担当者より折り返しご連絡いたします。</p>
+	<div class="complete-title">ご応募ありがとうございます</div>
+	<p>エントリーを受け付けました。<br>確認メールをお送りしましたのでご確認ください。<br>書類選考の上、担当者より折り返しご連絡いたします。</p>
 </div>
 
 </div></div>
 
 
 
-<style>.site-content {max-width: 900px;}
+<style>.site-content {max-width: 1100px;}
 
 /* Contact Form Styles */
 .form-input, .form-confirm, .form-complete {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 .form-confirm, .form-complete {
@@ -448,6 +509,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group select,
 .form-group textarea {
   width: 100%;
   padding: 12px 16px;
@@ -456,8 +520,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   font-size: 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
   font-family: inherit;
+  background-color: #fff;
+}
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
 }
 .form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: #0445ff;
@@ -465,7 +539,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 150px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
 .required {
   color: #e53935;
@@ -641,15 +725,24 @@ function showCareerConfirm() {
   const form = document.getElementById('career-contact-form');
   const errors = [];
 
-  const company = form.company.value.trim();
   const name = form.name.value.trim();
+  const kana = form.kana.value.trim();
   const email = form.email.value.trim();
+  const phone = form.phone.value.trim();
+  const position = form.position.value;
+  const experience = form.experience.value;
+  const company = form.company.value.trim();
+  const portfolio = form.portfolio.value.trim();
   const message = form.message.value.trim();
   const privacy = form.privacy.checked;
 
   if (name.length < 2) errors.push('氏名を入力してください');
+  if (kana.length < 2) errors.push('フリガナを入力してください');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push('有効なメールアドレスを入力してください');
-  if (message.length < 10) errors.push('お問い合わせ内容を10文字以上入力してください');
+  if (phone.length < 10) errors.push('電話番号を入力してください');
+  if (!position) errors.push('応募職種を選択してください');
+  if (!experience) errors.push('経験年数を選択してください');
+  if (message.length < 50) errors.push('志望動機・自己PRを50文字以上入力してください');
   if (!privacy) errors.push('プライバシーポリシーに同意してください');
 
   const errorsDiv = document.getElementById('career-form-errors');
@@ -662,14 +755,27 @@ function showCareerConfirm() {
   errorsDiv.classList.remove('show');
 
   // 確認画面に値を設定
+  document.getElementById('career-confirm-name').textContent = name;
+  document.getElementById('career-confirm-kana').textContent = kana;
+  document.getElementById('career-confirm-email').textContent = email;
+  document.getElementById('career-confirm-phone').textContent = phone;
+  document.getElementById('career-confirm-position').textContent = position;
+  document.getElementById('career-confirm-experience').textContent = experience;
+
   if (company) {
     document.getElementById('career-confirm-company').textContent = company;
     document.getElementById('career-confirm-company-row').style.display = 'flex';
   } else {
     document.getElementById('career-confirm-company-row').style.display = 'none';
   }
-  document.getElementById('career-confirm-name').textContent = name;
-  document.getElementById('career-confirm-email').textContent = email;
+
+  if (portfolio) {
+    document.getElementById('career-confirm-portfolio').textContent = portfolio;
+    document.getElementById('career-confirm-portfolio-row').style.display = 'flex';
+  } else {
+    document.getElementById('career-confirm-portfolio-row').style.display = 'none';
+  }
+
   document.getElementById('career-confirm-message').textContent = message;
 
   // 画面切り替え
@@ -691,15 +797,20 @@ async function submitCareerForm() {
   if (form.honeypot.value) return;
 
   submitBtn.disabled = true;
-  submitBtn.textContent = '送信中...';
+  submitBtn.textContent = '応募中...';
 
   const data = {
-    company: form.company.value.trim(),
     name: form.name.value.trim(),
+    kana: form.kana.value.trim(),
     email: form.email.value.trim(),
-    subject: '【採用】お問い合わせ',
+    phone: form.phone.value.trim(),
+    position: form.position.value,
+    experience: form.experience.value,
+    company: form.company.value.trim(),
+    portfolio: form.portfolio.value.trim(),
+    subject: '【採用応募】' + form.position.value,
     message: form.message.value.trim(),
-    source: 'career'
+    source: 'career-entry'
   };
 
   try {
@@ -717,9 +828,9 @@ async function submitCareerForm() {
       throw new Error('送信に失敗しました');
     }
   } catch (error) {
-    alert('送信中にエラーが発生しました。お手数ですが、再度お試しください。');
+    alert('応募処理中にエラーが発生しました。お手数ですが、再度お試しください。');
     submitBtn.disabled = false;
-    submitBtn.textContent = '送信する';
+    submitBtn.textContent = '応募する';
   }
 }
 </script>
