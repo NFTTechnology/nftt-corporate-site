@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFTT Design Preview - B3 with SVG Icons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-heading: 'Inter', 'Noto Sans JP', sans-serif;
+      --font-body: 'Noto Sans JP', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --bg-deep: #222222;
+      --bg-surface: #2a2a2a;
+      --bg-elevated: #333333;
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.45);
+      --accent: #4a9eff;
+      --accent-dim: rgba(74, 158, 255, 0.12);
+      --accent-border: rgba(74, 158, 255, 0.3);
+      --border: rgba(255, 255, 255, 0.08);
+      --glow: 0 0 40px rgba(74, 158, 255, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+      padding: 60px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(74, 158, 255, 0.04) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== SECTION WRAPPER ===== */
+    .design-section {
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .design-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 10px 20px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 100px;
+      margin-bottom: 48px;
+    }
+
+    .design-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* ===== SHARED STYLES ===== */
+    .container { max-width: 1140px; margin: 0 auto; }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 10vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .section-header .subtitle {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== BENTO GRID ===== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-dim), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .bento-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+
+    .bento-card:hover::before { opacity: 1; }
+
+    .bento-card.col-12 { grid-column: span 12; }
+    .bento-card.col-8 { grid-column: span 8; }
+    .bento-card.col-6 { grid-column: span 6; }
+    .bento-card.col-4 { grid-column: span 4; }
+    .bento-card.col-3 { grid-column: span 3; }
+
+    @media (max-width: 900px) {
+      .bento-card.col-8, .bento-card.col-6 { grid-column: span 12; }
+      .bento-card.col-4, .bento-card.col-3 { grid-column: span 6; }
+    }
+    @media (max-width: 600px) {
+      .bento-card.col-4, .bento-card.col-3 { grid-column: span 12; }
+    }
+
+    /* Icon styles */
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .bento-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .bento-card:hover .bento-icon {
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
+    }
+
+    .bento-card h3 {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 5px 10px;
+      border-radius: 100px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NFT4C BANNER B3 ===== */
+    .nft4c-banner {
+      grid-column: span 12;
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.08), rgba(99, 102, 241, 0.05));
+      border: 1px solid var(--accent-border);
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .nft4c-banner::before { display: none; }
+    .nft4c-banner:hover {
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.12), rgba(99, 102, 241, 0.08));
+      box-shadow: var(--glow);
+    }
+    .nft4c-banner .nft4c-text { flex: 1; }
+    .nft4c-banner h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .nft4c-banner p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .nft4c-banner .nft4c-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      transition: gap 0.3s;
+    }
+    .nft4c-banner:hover .nft4c-link { gap: 12px; }
+    .nft4c-banner img {
+      width: 280px;
+      height: auto;
+      flex-shrink: 0;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nft4c-banner:hover img { transform: scale(1.05); }
+    @media (max-width: 768px) {
+      .nft4c-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nft4c-banner img { width: 100%; max-width: 300px; }
+    }
+
+    /* NFT4C Hero (一番目立つ版) */
+    .nft4c-hero {
+      padding: 40px 48px;
+      background: linear-gradient(135deg, rgba(74, 158, 255, 0.12), rgba(99, 102, 241, 0.08));
+      border: 2px solid var(--accent-border);
+    }
+    .nft4c-hero h3 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .nft4c-hero p {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .nft4c-hero img {
+      width: 320px;
+    }
+    .nft4c-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    @media (max-width: 768px) {
+      .nft4c-hero { padding: 28px; }
+      .nft4c-hero h3 { font-size: 24px; }
+      .nft4c-hero img { width: 100%; max-width: 280px; }
+    }
+
+    /* ===== EDITORIAL NEWS GRID ===== */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 800px) {
+      .editorial-grid { grid-template-columns: 1fr; }
+    }
+
+    .editorial-featured {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .editorial-featured:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+
+    .editorial-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--bg-deep), rgba(74, 158, 255, 0.08));
+    }
+
+    .editorial-body { padding: 28px; }
+
+    .editorial-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .editorial-body h3 {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.7;
+      transition: color 0.3s;
+    }
+
+    .editorial-featured:hover .editorial-body h3 { color: var(--accent); }
+
+    .editorial-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .editorial-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .editorial-item:hover {
+      border-color: var(--accent-border);
+      transform: translateX(6px);
+    }
+
+    .editorial-item h4 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.7;
+      transition: color 0.3s;
+    }
+
+    .editorial-item:hover h4 { color: var(--accent); }
+
+    /* View More Button */
+    .view-more-wrap { text-align: center; margin-top: 48px; }
+
+    .view-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .view-more:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .preview-footer {
+      padding: 48px 24px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Icon style variations */
+    .icon-style-a .bento-icon {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+    .icon-style-a .bento-icon svg {
+      stroke-width: 1.5;
+    }
+
+    .icon-style-b .bento-icon {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+    }
+    .icon-style-b .bento-icon svg {
+      stroke-width: 1.5;
+    }
+
+    .icon-style-c .bento-icon {
+      background: transparent;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+    }
+    .icon-style-c .bento-card:hover .bento-icon {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>B3 + SVG Icons</h1>
+  <p>メトロスタイルのシンプルな線画アイコン</p>
+</header>
+
+<!-- ==================== Style A: Minimal (no background) ==================== -->
+<section class="design-section icon-style-a" style="background: linear-gradient(180deg, rgba(74,158,255,0.03), transparent);">
+  <div class="container">
+    <span class="design-label">Style A - Minimal（背景なし）</span>
+
+    <div class="section-header">
+      <h2>Projects</h2>
+      <div class="subtitle">事業内容</div>
+    </div>
+
+    <div class="bento-grid">
+      <!-- NFT4C: 主力プロダクト（一番上・一番大きく） -->
+      <a href="https://nft4c.io" target="_blank" rel="noopener" class="bento-card nft4c-banner nft4c-hero">
+        <div class="nft4c-text">
+          <span class="nft4c-badge">FLAGSHIP PRODUCT</span>
+          <h3>NFT4CREATORS</h3>
+          <p>日本発のアートジェネラティブツール。誰でも簡単にジェネラティブNFTを作成できます。コードなしでレイヤー合成、レアリティ設定、IPFS配信まで対応。</p>
+          <span class="nft4c-link">nft4c.io →</span>
+        </div>
+        <img src="/wp-content/uploads/2023/01/mv__sp.png" alt="NFT4CREATORS">
+      </a>
+      <!-- 他のサービス -->
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>NFTマーケットプレイス</h3>
+        <p>垂直統合型マーケットプレイスを構築。独自コントラクト対応。</p>
+        <span class="bento-tag">OpenSea互換</span>
+      </div>
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>トークンコンサルティング</h3>
+        <p>トークンを活用したファンマーケティング戦略の設計・支援。</p>
+        <span class="bento-tag">Consulting</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M6 11V8a2 2 0 0 1 2-2h2"/><path d="M18 11V8a2 2 0 0 0-2-2h-2"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/></svg>
+        </div>
+        <h3>GameFi開発</h3>
+        <p>ブロックチェーンゲーム企画〜運営</p>
+        <span class="bento-tag">Play to Earn</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>NFT CMS</h3>
+        <p>web3サービスをノーコード運用</p>
+        <span class="bento-tag">No-Code</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h3>投資最適化ツール</h3>
+        <p>NFT情報をリアルタイム解析</p>
+        <span class="bento-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Style B: Boxed (accent background) ==================== -->
+<section class="design-section icon-style-b">
+  <div class="container">
+    <span class="design-label">Style B - Boxed（ボックス背景）</span>
+
+    <div class="section-header">
+      <h2>Projects</h2>
+      <div class="subtitle">事業内容</div>
+    </div>
+
+    <div class="bento-grid">
+      <!-- NFT4C: 主力プロダクト（一番上・一番大きく） -->
+      <a href="https://nft4c.io" target="_blank" rel="noopener" class="bento-card nft4c-banner nft4c-hero">
+        <div class="nft4c-text">
+          <span class="nft4c-badge">FLAGSHIP PRODUCT</span>
+          <h3>NFT4CREATORS</h3>
+          <p>日本発のアートジェネラティブツール。誰でも簡単にジェネラティブNFTを作成できます。コードなしでレイヤー合成、レアリティ設定、IPFS配信まで対応。</p>
+          <span class="nft4c-link">nft4c.io →</span>
+        </div>
+        <img src="/wp-content/uploads/2023/01/mv__sp.png" alt="NFT4CREATORS">
+      </a>
+      <!-- 他のサービス -->
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>NFTマーケットプレイス</h3>
+        <p>垂直統合型マーケットプレイスを構築。独自コントラクト対応。</p>
+        <span class="bento-tag">OpenSea互換</span>
+      </div>
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>トークンコンサルティング</h3>
+        <p>トークンを活用したファンマーケティング戦略の設計・支援。</p>
+        <span class="bento-tag">Consulting</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M6 11V8a2 2 0 0 1 2-2h2"/><path d="M18 11V8a2 2 0 0 0-2-2h-2"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/></svg>
+        </div>
+        <h3>GameFi開発</h3>
+        <p>ブロックチェーンゲーム企画〜運営</p>
+        <span class="bento-tag">Play to Earn</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>NFT CMS</h3>
+        <p>web3サービスをノーコード運用</p>
+        <span class="bento-tag">No-Code</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h3>投資最適化ツール</h3>
+        <p>NFT情報をリアルタイム解析</p>
+        <span class="bento-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Style C: Circle ==================== -->
+<section class="design-section icon-style-c" style="background: linear-gradient(180deg, rgba(74,158,255,0.03), transparent);">
+  <div class="container">
+    <span class="design-label">Style C - Circle（丸枠）</span>
+
+    <div class="section-header">
+      <h2>Projects</h2>
+      <div class="subtitle">事業内容</div>
+    </div>
+
+    <div class="bento-grid">
+      <!-- NFT4C: 主力プロダクト（一番上・一番大きく） -->
+      <a href="https://nft4c.io" target="_blank" rel="noopener" class="bento-card nft4c-banner nft4c-hero">
+        <div class="nft4c-text">
+          <span class="nft4c-badge">FLAGSHIP PRODUCT</span>
+          <h3>NFT4CREATORS</h3>
+          <p>日本発のアートジェネラティブツール。誰でも簡単にジェネラティブNFTを作成できます。コードなしでレイヤー合成、レアリティ設定、IPFS配信まで対応。</p>
+          <span class="nft4c-link">nft4c.io →</span>
+        </div>
+        <img src="/wp-content/uploads/2023/01/mv__sp.png" alt="NFT4CREATORS">
+      </a>
+      <!-- 他のサービス -->
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>NFTマーケットプレイス</h3>
+        <p>垂直統合型マーケットプレイスを構築。独自コントラクト対応。</p>
+        <span class="bento-tag">OpenSea互換</span>
+      </div>
+      <div class="bento-card col-6">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>トークンコンサルティング</h3>
+        <p>トークンを活用したファンマーケティング戦略の設計・支援。</p>
+        <span class="bento-tag">Consulting</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="9" rx="2"/><path d="M6 11V8a2 2 0 0 1 2-2h2"/><path d="M18 11V8a2 2 0 0 0-2-2h-2"/><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/></svg>
+        </div>
+        <h3>GameFi開発</h3>
+        <p>ブロックチェーンゲーム企画〜運営</p>
+        <span class="bento-tag">Play to Earn</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
+        <h3>NFT CMS</h3>
+        <p>web3サービスをノーコード運用</p>
+        <span class="bento-tag">No-Code</span>
+      </div>
+      <div class="bento-card col-4">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
+        <h3>投資最適化ツール</h3>
+        <p>NFT情報をリアルタイム解析</p>
+        <span class="bento-tag">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NEWS SECTION ==================== -->
+<section class="design-section">
+  <div class="container">
+    <span class="design-label">News Section</span>
+
+    <div class="section-header">
+      <h2>News</h2>
+      <div class="subtitle">お知らせ</div>
+    </div>
+
+    <div class="editorial-grid">
+      <a href="/news/566/" class="editorial-featured">
+        <div class="editorial-image"></div>
+        <div class="editorial-body">
+          <div class="editorial-date">2023.08.01</div>
+          <h3>Nature-based Solutions（NbS）のプロフェッショナル小松正之氏監修。四万十川の生態系調査「ShimantoRiver2023」NFTプロジェクト発足。</h3>
+        </div>
+      </a>
+      <div class="editorial-list">
+        <a href="/news/514/" class="editorial-item">
+          <div class="editorial-date">2023.06.27</div>
+          <h4>NFT競馬ゲーム「NEOBRED」がホワイトペーパーを公開</h4>
+        </a>
+        <a href="/news/383/" class="editorial-item">
+          <div class="editorial-date">2023.01.26</div>
+          <h4>アートジェネラティブツール【NFT4CREATORS】をリリース</h4>
+        </a>
+        <a href="/news/68/" class="editorial-item">
+          <div class="editorial-date">2022.03.24</div>
+          <h4>事業部新設に伴い、新メンバー募集</h4>
+        </a>
+      </div>
+    </div>
+    <div class="view-more-wrap">
+      <a href="/news/" class="view-more">お知らせ一覧</a>
+    </div>
+  </div>
+</section>
+
+<footer class="preview-footer">
+  NFTT Design Preview — B3 + SVG Icons
+</footer>
+
+</body>
+</html>

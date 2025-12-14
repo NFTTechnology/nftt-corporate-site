@@ -1,0 +1,18 @@
+{
+  "name": "nftt-corporate-site",
+  "version": "1.0.0",
+  "description": "## 概要",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "critical": "^7.2.1",
+    "csso": "^5.0.5",
+    "csso-cli": "^4.0.2",
+    "purgecss": "^7.0.2"
+  }
+}
