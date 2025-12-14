@@ -1,0 +1,8 @@
+node_modules/
+node_modules/
+*-preview*.html
+*.backup.css
+*.optimized*.css
+*.purged*.css
+generate-critical.*
+package-lock.json
