@@ -245,7 +245,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div><!-- .drawer-navigation -->
 		</header><!-- .main-header -->
 
-				<div class="header-single jumbotron">
+				<div class="header-single jumbotron" data-bg-jpg="/images/cropped-ntftexh-here.jpg" data-bg-webp="/images/cropped-ntftexh-here.webp">
 			<div class="jumbotron-overlay">
 				<div class="jumbotron-content">
 
@@ -388,6 +388,16 @@ var businesspressScreenReaderText = {"expand":"\u5b50\u30e1\u30cb\u30e5\u30fc\u3
 
 <!-- Consolidated JS -->
 <script>var businesspressScreenReaderText = {"expand":"子メニューを開く","collapse":"子メニューを閉じる"};</script>
+<!-- WebP Background Detection -->
+<script>
+(function(){
+  var c=document.createElement('canvas');
+  var w=!!(c.getContext&&c.getContext('2d'))&&c.toDataURL('image/webp').indexOf('data:image/webp')===0;
+  document.querySelectorAll('[data-bg-webp]').forEach(function(el){
+    el.style.setProperty('background-image','url('+(w?el.dataset.bgWebp:el.dataset.bgJpg)+')','important');
+  });
+})();
+</script>
 <script defer src="/assets/js/main.js?v=20251214"></script>
 <script defer src="/assets/js/particles.js?v=20251214"></script>
 <script defer src="/assets/js/particlesjs-config.js?v=20251214"></script>
