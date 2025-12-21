@@ -3,7 +3,7 @@
 /* CSS Variables */
 .container-projects {
   --font-heading: 'Inter', 'Noto Sans JP', sans-serif;
-  --font-body: 'Noto Sans JP', 'Inter', sans-serif;
+  --font-body: 'Inter', 'Noto Sans JP', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --bg-deep: #222222;
   --bg-surface: #2a2a2a;
@@ -279,7 +279,7 @@
 }
 
 .container-vision .section-header .subtitle {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--text-primary);
@@ -300,7 +300,7 @@
 }
 
 .container-vision .vision-content p {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px;
   line-height: 1.9;
   color: #222;
@@ -345,7 +345,7 @@
 }
 
 .container-news .section-header .subtitle {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-muted);
@@ -412,7 +412,7 @@
 }
 
 .editorial-body h3 {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.7;
@@ -447,7 +447,7 @@
 }
 
 .editorial-item h4 {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.7;
@@ -516,7 +516,7 @@
 }
 
 .container-contact .section-header .subtitle {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--text-muted);
@@ -536,7 +536,7 @@
 
 .form-group label {
   display: block;
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
@@ -552,7 +552,7 @@
 .form-group input,
 .form-group textarea {
   width: 100%;
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 15px;
   color: #ffffff !important;
   background: var(--bg-surface);
@@ -632,7 +632,7 @@
 }
 
 .confirm-header {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   color: var(--text-secondary);
   background: var(--bg-surface);
@@ -655,14 +655,14 @@
 .confirm-label {
   width: 120px;
   flex-shrink: 0;
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 13px;
   color: var(--text-muted);
 }
 
 .confirm-value {
   flex: 1;
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   color: var(--text-primary);
   white-space: pre-wrap;
@@ -707,7 +707,7 @@
 }
 
 .form-complete p {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 14px;
   line-height: 1.8;
   color: var(--text-secondary);
@@ -849,7 +849,7 @@ body.category-news .entry-header {
 }
 
 body.category-news .entry-title {
-  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.7;
