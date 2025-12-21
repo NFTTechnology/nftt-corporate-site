@@ -2,7 +2,7 @@
 html{line-height:1.15;-webkit-text-size-adjust:100%;font-size:85%;overflow-x:hidden}
 html:lang(ja){font-size:68%}
 body{margin:0;color:#444;font-family:Inter,"Noto Sans JP",Helvetica,Arial,sans-serif;font-size:18px;line-height:1.6;word-wrap:break-word;background-color:#fff}
-body:lang(ja){font-family:"Noto Sans JP",Inter,sans-serif;font-size:15px;font-weight:500;line-height:1.8}
+body:lang(ja){font-family:Inter,"Noto Sans JP",sans-serif;font-size:15px;font-weight:500;line-height:1.8}
 *,::after,::before{box-sizing:border-box}
 img{height:auto;max-width:100%;vertical-align:middle;border-style:none}
 a{color:#4693f5;text-decoration:underline;transition:all .15s ease-in-out;background-color:transparent}
